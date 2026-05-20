@@ -1,0 +1,13 @@
+const express = require('express')
+const cors = require('cors')
+const toolRouter = require('./routes/tool')
+const app = express()
+
+app.use(cors())
+app.use(express.json())
+app.use('/api/tool', toolRouter)
+
+const port = 3000
+app.listen(port, () => {
+  console.log("后端启动成功，端口：" + port)
+})

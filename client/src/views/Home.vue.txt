@@ -1,0 +1,12 @@
+<template>
+  <div class="home">
+    <div class="card" @click="$router.push('/rule')">自媒体合规助手</div>
+    <div class="card" @click="$router.push('/moments')">朋友圈文案</div>
+    <div class="card" @click="$router.push('/summary')">群聊总结</div>
+  </div>
+</template>
+
+<style>
+.home { display: grid; gap: 20px; padding: 30px; }
+.card { padding: 20px; border:1px solid #ddd; border-radius:10px; cursor:pointer; }
+</style>

@@ -1,0 +1,15 @@
+<template>
+  <h1>智简灵工具箱</h1>
+  <router-view/>
+</template>
+
+<script setup>
+import { createRouter, createWebHistory } from 'vue-router'
+import Home from './views/Home.vue'
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+    { path: '/', component: Home }
+  ]
+})
+</script>

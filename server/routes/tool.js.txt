@@ -1,0 +1,27 @@
+const express = require('express')
+const router = express.Router()
+const { chatAI } = require('../utils/ai')
+const pool = require('../db')
+
+router.post('/check-word', async (req, res) => {
+  const { content } = req.body
+  const prompt = `你是自媒体合规助手，检测违禁词并改写`
+  const result = await chatAI(prompt, content)
+  res.json({ code: 200, data: result })
+})
+
+router.post('/make-moments', async (req, res) => {
+  const { scene, keyWord } = req.body
+  const prompt = `生成高级感朋友圈文案`
+  const result = await chatAI(prompt, `${scene} ${keyWord}`)
+  res.json({ code: 200, data: result })
+})
+
+router.post('/chat-summary', async (req, res) => {
+  const { chatText } = req.body
+  const prompt = `总结群聊，去掉废话`
+  const result = await chatAI(prompt, chatText)
+  res.json({ code: 200, data: result })
+})
+
+module.exports = router

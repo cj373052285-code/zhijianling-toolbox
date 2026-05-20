@@ -1,0 +1,20 @@
+const axios = require('axios')
+
+const AI_API = "你的大模型API地址"
+const AI_KEY = "你的API密钥"
+
+async function chatAI(prompt, content) {
+  let res = await axios.post(AI_API, {
+    model: "gpt-3.5-turbo",
+    messages: [
+      { role: "system", content: prompt },
+      { role: "user", content: content }
+    ],
+    temperature: 0.7
+  }, {
+    headers: { Authorization: `Bearer ${AI_KEY}` }
+  })
+  return res.data.choices[0].message.content
+}
+
+module.exports = { chatAI }
